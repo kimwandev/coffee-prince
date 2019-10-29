@@ -1,7 +1,7 @@
 # The Coffee Challenge
 
 ## Install
-
+Run the command below to install dependencies of API and web project
 ```
     npm run install
 ```
