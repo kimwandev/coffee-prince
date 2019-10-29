@@ -37,16 +37,40 @@ app.use(
 
 
 app.get('/coffee-lovers', cors(corsOptions), (request, response) => {
-    let q = '';
-    if (request.query.name) {
-      const arr = ["SELECT * FROM coffee_lovers WHERE Name like '%", request.query.name, "%' ORDER BY ID ASC"];
-      q = arr.join('');
-    } else {
-      q = "SELECT * FROM coffee_lovers ORDER BY ID ASC";
-    }
 
+    let arrQuery = ['SELECT * FROM coffee_lovers'];
+
+
+    if (request.query.name || request.query.coffee || request.query.attribute1 || request.query.attribute2) {
+      arrQuery.push('WHERE');
+
+      if (request.query.name) {
+        arrQuery.push("Name like '%" + request.query.name + "%'");
+        arrQuery.push('AND');
+      }
+
+      if (request.query.coffee) {
+        arrQuery.push("Coffee = '" + request.query.coffee + "'");
+        arrQuery.push('AND');
+      }
+
+      if (request.query.attribute1) {
+        arrQuery.push("Attribute1 = '" + request.query.attribute1 + "'");
+        arrQuery.push('AND');
+      }
+
+      if (request.query.attribute2) {
+        arrQuery.push("Attribute2 = '" + request.query.attribute2 + "'");
+        arrQuery.push('AND');
+      }
+      
+      arrQuery.pop();
+    }
     
-    console.log(q);
+    arrQuery.push('ORDER BY ID ASC');
+
+    let q = arrQuery.join(' ');
+
     pool.query(q, (error, results) => {
         if (error) {
             throw error;

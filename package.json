@@ -1,10 +1,12 @@
 {
-  "name": "coffee-prince",
+  "name": "coffee-prince-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start:api": "cd api && npm run start",
+    "start:web": "cd web && npm run start",
+    "install": "cd api && npm install && cd .. && cd web && npm install"
   },
   "repository": {
     "type": "git",
@@ -15,13 +17,5 @@
   "bugs": {
     "url": "https://github.com/kimwandev/coffee-prince/issues"
   },
-  "homepage": "https://github.com/kimwandev/coffee-prince#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "pg": "^7.12.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
-  }
+  "homepage": "https://github.com/kimwandev/coffee-prince#readme"
 }
