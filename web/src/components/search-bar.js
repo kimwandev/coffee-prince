@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
             </select>
             
             <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button" onClick={this.props.searchCoffeeLovers}>Search</button>
+                <button className="btn btn-primary" type="button" onClick={this.props.searchCoffeeLovers}>Search</button>
             </div>
         </div>
     }
