@@ -70,6 +70,7 @@ app.get('/coffee-lovers', cors(corsOptions), (request, response) => {
     arrQuery.push('ORDER BY ID ASC');
 
     let q = arrQuery.join(' ');
+    console.log('test');
 
     pool.query(q, (error, results) => {
         if (error) {
